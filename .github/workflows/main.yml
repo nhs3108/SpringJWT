@@ -1,7 +1,7 @@
 name: Dev Integration Test
 on:
   schedule:
-    - cron: '0 0/5 * * *'
+    - cron: '0/5 * * * *'
 jobs:
   run_integration_test:
     runs-on: ubuntu-latest
