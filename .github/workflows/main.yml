@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Build
-    environment: dev
+    environment: prod-FE-approve-build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
