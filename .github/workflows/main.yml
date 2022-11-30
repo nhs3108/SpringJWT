@@ -1,0 +1,21 @@
+name: Dev Integration Test
+on:
+  schedule:
+    - cron: '0 0/5 * * *'
+jobs:
+  run_integration_test:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout to branch develop
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+      - name: Prepare build machine
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+          cache: 'gradle'
+      - name: Update timezone to Europe/Zurich
+        run: sudo timedatectl set-timezone Europe/Zurich
