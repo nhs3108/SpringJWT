@@ -1,22 +1,30 @@
-name: Dev Integration Test
+name: Prod Pipeline (WEBAPP)
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'
+
 jobs:
-  run_integration_test:
+  build:
+    name: Build
+    environment: prod-FE-approve-build
     runs-on: ubuntu-latest
-    environment: dev
+    defaults:
+      run:
+        working-directory: ./aepsy-app
     steps:
-      - name: Checkout to branch develop
+      - name: Checkout Repo
         uses: actions/checkout@v2
-        with:
-          ref: develop
-      - name: Prepare build machine
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '17'
-          cache: 'gradle'
-      - name: Update timezone to Europe/Zurich
-        run: sudo timedatectl set-timezone Europe/Zurich
+      - name: Log ref
+        run: echo WebApp will be build from ref ${GITHUB_REF##*/}
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment: prod-FE-approve-deploy
+    defaults:
+      run:
+        working-directory: ./aepsy-app
+    steps:
+      - name: Log ref
+        run: echo WebApp will be build from ref ${GITHUB_REF##*/}
