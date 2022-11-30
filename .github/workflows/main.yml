@@ -9,9 +9,6 @@ jobs:
     name: Build
     environment: prod-FE-approve-build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./aepsy-app
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -22,9 +19,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment: prod-FE-approve-deploy
-    defaults:
-      run:
-        working-directory: ./aepsy-app
     steps:
       - name: Log ref
         run: echo WebApp will be build from ref ${GITHUB_REF##*/}
