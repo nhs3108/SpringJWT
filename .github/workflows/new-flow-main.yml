@@ -6,8 +6,7 @@ jobs:
   run_if_failure:
     runs-on: ubuntu-latest
     steps:
-      - name: Welcome message
-        run: echo Start to deploy with branch ${{ github.event.client_payload.branch }}
+      - uses: actions/checkout@v2
       - name: Fetch latest release version
         id: fetch-latest-release
         uses: reloc8/action-latest-release-version@1.0.0
