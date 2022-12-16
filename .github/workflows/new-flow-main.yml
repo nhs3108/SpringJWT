@@ -17,7 +17,5 @@ jobs:
         with:
           ref: ${{ steps.fetch-latest-release.outputs.latest-release }}
       - name: checkout 2
-        uses: actions/checkout@v2
-        with:
-          ref: 'v.1.4'
+        run: git checkout ${{ steps.fetch-latest-release.outputs.latest-release }}
           
