@@ -1,9 +1,9 @@
 on:
   repository_dispatch:
-    types: [deploy-website]
+    types: [deploy-latest-release]
     
 jobs:
-  run_if_failure:
+  deploy-latest-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,4 +16,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ steps.fetch-latest-release.outputs.latest-release }}
+      - name: checkout 2
+        uses: actions/checkout@v2
+        with:
+          ref: v.1.4
           
