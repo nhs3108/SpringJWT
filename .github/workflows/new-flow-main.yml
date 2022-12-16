@@ -19,5 +19,5 @@ jobs:
       - name: checkout 2
         uses: actions/checkout@v2
         with:
-          ref: v.1.4
+          ref: 'v.1.4'
           
