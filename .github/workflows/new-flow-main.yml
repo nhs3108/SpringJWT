@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Welcome message
-        run: echo Start to deploy with branch ${{ github.event.branch }}
+        run: echo Start to deploy with branch ${{ github.event.client_payload.branch }}
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.branch }}
+          ref: ${{ github.event.client_payload.branch }}
           
