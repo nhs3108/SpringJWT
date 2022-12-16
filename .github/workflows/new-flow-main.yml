@@ -6,12 +6,10 @@ jobs:
   run_if_failure:
     runs-on: ubuntu-latest
     steps:
+      - name: Welcome message
+        run: echo Start to deploy with branch ${{ github.event.branch }}
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.client_payload.branch_name }}
-      - name: Log ref
-        run: echo CMS will be build from ref ${GITHUB_REF##*/}
-      - env:
-          MESSAGE: ${{ github.event.client_payload.branch_name }}
-        run: echo $MESSAGE
+          ref: ${{ github.event.branch }}
+          
