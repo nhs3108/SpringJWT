@@ -12,7 +12,7 @@ jobs:
         id: generate_token
         uses: tibdex/github-app-token@v1
         with:
-          app_id: 2125387
+          app_id: 299701
 
           # Optional.
           # github_api_url: https://api.example.com
@@ -25,7 +25,7 @@ jobs:
           # permissions: >-
           #   {"members": "read"}
 
-          private_key: 357a6637ccb315941be28808b3929b10baf75cd6
+          private_key: 4db9e200375f3f67560405752489fa1dade1d9b3
 
           # Optional.
           # repository: owner/repo
