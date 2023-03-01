@@ -1,24 +1,27 @@
 name: Prod Pipeline (WEBAPP)
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - master
 
 jobs:
-  build:
-    name: Build
-    environment: prod-FE-approve-build
+  myjob:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-      - name: Log ref
-        run: echo WebApp will be build from ref ${GITHUB_REF##*/}
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    environment: prod-FE-approve-deploy
-    steps:
-      - name: Log ref
-        run: echo WebApp will be build from ref ${GITHUB_REF##*/}
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Wait for approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: nhs3108
+          minimum-approvals: 1
+          issue-title: "Deploying v1.3.5 to prod from staging"
+          issue-body: "Please approve or deny the deployment of version v1.3.5."
+          exclude-workflow-initiator-as-approver: false
+          additional-approved-words: ''
+          additional-denied-words: ''
