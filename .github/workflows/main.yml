@@ -11,7 +11,7 @@ jobs:
       - name: Wait for approval
         uses: trstringer/manual-approval@v1
         with:
-          secret: 37356d89077d2a442dc8077e043204f67f4d1eb6
+          secret: ${{ github.TOKEN }}
           approvers: nhs3108
           minimum-approvals: 1
           issue-title: "Deploying v1.3.5 to prod from staging"
