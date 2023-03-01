@@ -14,7 +14,7 @@ jobs:
           secret: ${{ github.TOKEN }}
           approvers: nhs3108
           minimum-approvals: 1
-          issue-title: "Deploying v1.3.5 to prod from staging"
+          issue-title: "Deploying v1.3.5 to prod from staging 2"
           issue-body: "Please approve or deny the deployment of version v1.3.5."
           exclude-workflow-initiator-as-approver: false
           additional-approved-words: ''
