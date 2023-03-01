@@ -20,6 +20,7 @@ jobs:
       - name: Wait for approval
         uses: trstringer/manual-approval@v1
         with:
+          secret: ${{ steps.generate_token.outputs.token }}
           approvers: nhs3108
           minimum-approvals: 1
           issue-title: "Deploying v1.3.5 to prod from staging"
