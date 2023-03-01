@@ -8,16 +8,9 @@ jobs:
   myjob:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate token
-        id: generate_token
-        uses: tibdex/github-app-token@v1
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Wait for approval
         uses: trstringer/manual-approval@v1
         with:
-          secret: ${{ github.TOKEN }}
           approvers: nhs3108
           minimum-approvals: 1
           issue-title: "Deploying v1.3.5 to prod from staging"
